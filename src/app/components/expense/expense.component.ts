@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-expense',
@@ -9,10 +9,10 @@ import { FormControl, FormGroup } from "@angular/forms";
 export class ExpenseComponent {
 
   expenseForm = new FormGroup({
-    date: new FormControl(''),
-    category: new FormControl(''),
-    item: new FormControl(''),
-    amount: new FormControl(''),
+    date: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
+    item: new FormControl('', Validators.required),
+    amount: new FormControl('', Validators.required),
     note: new FormControl('')
   })
 
