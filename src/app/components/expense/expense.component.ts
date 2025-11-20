@@ -16,6 +16,17 @@ export class ExpenseComponent {
     note: new FormControl('')
   })
 
+  formatCurrency() {
+    const value = this.expenseForm.value.amount;
+
+    if (value == null || value === '') return;
+
+    const num = Number(value);
+    this.expenseForm.patchValue({
+      amount: num.toFixed(2)
+    });
+  }
+
   handleSubmit() {
     alert('You have submitted!'
       + this.expenseForm.value.date)

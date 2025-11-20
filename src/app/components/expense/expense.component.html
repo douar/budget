@@ -1,32 +1,32 @@
 <div class="expense-container">
   <form class="expense-form"
         [formGroup]="expenseForm" (ngSubmit)="handleSubmit()">
-    <label>
-      Date
-      <input type="date" formControlName="date" />
+    <label> Date
+      <input type="date"
+             formControlName="date" />
     </label>
 
-    <label>
-      Category
+    <label> Category
       <select formControlName="category">
         <option>Example 1</option>
         <option>Example 2</option>
       </select>
     </label>
 
-    <label>
-      Item
-      <input type="text" formControlName="item"/>
+    <label> Item
+      <input type="text"
+             formControlName="item"/>
     </label>
 
-    <label>
-      Amount
-      <input type="number" formControlName="amount"/>
+    <label> Amount
+      <input type="number"
+             formControlName="amount"
+             (blur)="formatCurrency()"/>
     </label>
 
-    <label>
-      Note
-      <input type="text" formControlName="note"/>
+    <label> Note
+      <input type="text"
+             formControlName="note"/>
     </label>
 
     <button type="submit" [disabled]="!expenseForm.valid">Submit</button>
