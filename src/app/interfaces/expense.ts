@@ -6,5 +6,6 @@ export interface Expense {
   category: Categories | string,
   item: string,
   amount: number,
+  note: string,
   type: ActivityType.DEBIT
 }
