@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {Categories} from "../../enums/categories";
 
 @Component({
   selector: 'app-expense',
@@ -7,6 +8,8 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./expense.component.css']
 })
 export class ExpenseComponent {
+
+  categoryList: string[] = Object.values(Categories)
 
   expenseForm = new FormGroup({
     date: new FormControl('', Validators.required),

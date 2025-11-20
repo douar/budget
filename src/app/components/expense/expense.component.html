@@ -8,8 +8,10 @@
 
     <label> Category
       <select formControlName="category">
-        <option>Example 1</option>
-        <option>Example 2</option>
+        <option *ngFor="let cat of categoryList"
+                [value]="cat">
+          {{cat}}
+        </option>
       </select>
     </label>
 
