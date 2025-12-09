@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Budget} from "../interfaces/budget";
 import {Expense} from "../interfaces/expense";
 
@@ -8,10 +8,15 @@ import {Expense} from "../interfaces/expense";
 })
 export class ExpenseService {
 
+  private $trackNewBudgetPage = new BehaviorSubject<number>(0)
   private $budgetList = new BehaviorSubject<Budget[]>([])
   private $selectedBudget = new BehaviorSubject<Budget | null>(null)
 
   constructor() { }
+
+  getTrackNewBudgetPage(): Observable<number> {
+    return this.$trackNewBudgetPage.asObservable()
+  }
 
   budgetExists(name: string): boolean {
     return this.$budgetList.getValue().some(

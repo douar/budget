@@ -1,4 +1,7 @@
 Create a New Budget Page
-<app-budget></app-budget>
 <hr>
-<app-expense></app-expense>
+<app-budget *ngIf="currentPage === 'name'"></app-budget>
+<hr>
+<app-expense *ngIf="currentPage === 'expense'"></app-expense>
+<hr>
+<button (click)="clickNext()">Next</button>
