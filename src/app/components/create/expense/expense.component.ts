@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Categories} from "../../enums/categories";
-import {Expense} from "../../interfaces/expense";
-import {ActivityType} from "../../enums/activity-type";
-import {ExpenseService} from "../../services/expense.service";
-import {Budget} from "../../interfaces/budget";
+import {Categories} from "../../../enums/categories";
+import {Expense} from "../../../interfaces/expense";
+import {ActivityType} from "../../../enums/activity-type";
+import {ExpenseService} from "../../../services/expense.service";
+import {Budget} from "../../../interfaces/budget";
 import {Subscription} from "rxjs";
 
 @Component({
