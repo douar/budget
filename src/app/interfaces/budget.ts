@@ -3,6 +3,6 @@ import {Income} from "./income";
 
 export interface Budget {
   name: string,
-  expense: Expense,
-  income: Income
+  expense: Expense[],
+  income: Income[]
 }
