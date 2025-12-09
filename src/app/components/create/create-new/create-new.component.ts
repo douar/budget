@@ -10,14 +10,16 @@ import {Subscription} from "rxjs";
 export class CreateNewComponent {
 
   trackPageSub: Subscription
-  pages: string[] = ["name", "expense", "income"]
   currentPageCount: number = 0
-  currentPage: string = this.pages[this.currentPageCount]
 
   constructor(private expenseService: ExpenseService) {
-    this.trackPageSub = this.expenseService.getTrackNewBudgetPage().subscribe({
+    this.trackPageSub = this.expenseService.getTrackNewBudgetPage().subscribe()
+  }
+
+  ngOnInit() {
+    this.expenseService.getTrackNewBudgetPage().subscribe({
       next: value => {
-        console.log(value)
+        this.currentPageCount = value
       },
       error: err => {
         console.log(err)
@@ -26,7 +28,7 @@ export class CreateNewComponent {
   }
 
   clickNext() {
-    console.log('clicked next')
+    this.expenseService.setTrackBudgetPage(this.currentPageCount+1)
   }
 
   ngOnDestroy() {

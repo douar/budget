@@ -18,6 +18,10 @@ export class ExpenseService {
     return this.$trackNewBudgetPage.asObservable()
   }
 
+  setTrackBudgetPage(num: number) {
+    this.$trackNewBudgetPage.next(num)
+  }
+
   budgetExists(name: string): boolean {
     return this.$budgetList.getValue().some(
       b => b.name.toLowerCase() === name.toLowerCase()
