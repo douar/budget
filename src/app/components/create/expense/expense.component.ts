@@ -53,6 +53,7 @@ export class ExpenseComponent {
       type: ActivityType.DEBIT
     }
 
+    this.expenseService.newExpense(newExpense)
   }
 
 }

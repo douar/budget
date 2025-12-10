@@ -52,7 +52,7 @@ export class ExpenseService {
   }
 
   newExpense(expense: Expense) {
-    console.log('called addNewExpense' + expense)
+    console.log('called addNewExpense' + JSON.stringify(expense))
   }
 
 }
