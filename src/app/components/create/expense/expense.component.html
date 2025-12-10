@@ -1,0 +1,45 @@
+<div class="expense-container">
+  <form class="expense-form"
+        [formGroup]="expenseForm" (ngSubmit)="handleSubmit()">
+    <label> Date
+      <input type="date"
+             formControlName="date" />
+    </label>
+
+    <label> Category
+      <select formControlName="category">
+        <option *ngFor="let cat of categoryList"
+                [value]="cat">
+          {{cat}}
+        </option>
+      </select>
+    </label>
+
+    <label> Item
+      <input type="text"
+             formControlName="item"/>
+    </label>
+
+    <label> Amount
+      <input type="number"
+             formControlName="amount"
+             (blur)="formatCurrency()"/>
+    </label>
+
+    <label> Note
+      <input type="text"
+             formControlName="note"/>
+    </label>
+
+    <button type="submit" [disabled]="!expenseForm.valid">Submit</button>
+  </form>
+</div>
+
+<h2>Display Input Testing</h2>
+<p>
+  Date: {{expenseForm.value.date}} <br/>
+  Category: {{expenseForm.value.category}} <br/>
+  Item: {{expenseForm.value.item}} <br/>
+  Amount: {{expenseForm.value.amount}} <br/>
+  Note: {{expenseForm.value.note}} <br/>
+</p>
