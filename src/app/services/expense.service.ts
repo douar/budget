@@ -8,7 +8,7 @@ import {Expense} from "../interfaces/expense";
 })
 export class ExpenseService {
 
-  private $trackNewBudgetPage = new BehaviorSubject<number>(0)
+  private $trackNewBudgetPage = new BehaviorSubject<number>(1)
   private $budgetList = new BehaviorSubject<Budget[]>([])
   private $selectedBudget = new BehaviorSubject<Budget | null>(null)
 
@@ -18,7 +18,7 @@ export class ExpenseService {
     return this.$trackNewBudgetPage.asObservable()
   }
 
-  setTrackBudgetPage(num: number) {
+  setTrackBudgetPage(num: number): void {
     this.$trackNewBudgetPage.next(num)
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ExpenseService} from "../../../services/expense.service";
-import {Subscription} from "rxjs";
+import {first, Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-create-new',
@@ -9,27 +9,11 @@ import {Subscription} from "rxjs";
 })
 export class CreateNewComponent {
 
-  trackPageSub: Subscription = new Subscription()
-  currentPageCount: number = 0
+  currentPage$: Observable<number> = this.expenseService.getTrackNewBudgetPage()
 
   constructor(private expenseService: ExpenseService) {}
 
-  ngOnInit() {
-    this.expenseService.getTrackNewBudgetPage().subscribe({
-      next: value => {
-        this.currentPageCount = value
-      },
-      error: err => {
-        console.log(err)
-      }
-    })
-  }
-
-  clickNext() {
-    this.expenseService.setTrackBudgetPage(this.currentPageCount+1)
-  }
-
-  ngOnDestroy() {
-    this.trackPageSub.unsubscribe()
+  clickNext(current: number) {
+    this.expenseService.setTrackBudgetPage(current + 1)
   }
 }

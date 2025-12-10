@@ -1,7 +1,12 @@
 Create a New Budget Page
 <hr>
-<app-budget *ngIf="currentPageCount === 0"></app-budget>
-<hr>
-<app-expense *ngIf="currentPageCount === 1"></app-expense>
-<hr>
-<button *ngIf="currentPageCount < 2" (click)="clickNext()">Next</button>
+
+<div *ngIf="currentPage$ | async as count">
+  <app-budget *ngIf="count === 1"></app-budget>
+  <hr>
+
+  <app-expense *ngIf="count === 2" ></app-expense>
+  <hr>
+
+  <button *ngIf="count < 3" (click)="clickNext(count)">Next</button>
+</div>
