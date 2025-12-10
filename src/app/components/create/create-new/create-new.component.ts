@@ -9,12 +9,10 @@ import {Subscription} from "rxjs";
 })
 export class CreateNewComponent {
 
-  trackPageSub: Subscription
+  trackPageSub: Subscription = new Subscription()
   currentPageCount: number = 0
 
-  constructor(private expenseService: ExpenseService) {
-    this.trackPageSub = this.expenseService.getTrackNewBudgetPage().subscribe()
-  }
+  constructor(private expenseService: ExpenseService) {}
 
   ngOnInit() {
     this.expenseService.getTrackNewBudgetPage().subscribe({
