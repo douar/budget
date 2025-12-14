@@ -32,21 +32,22 @@ export class BudgetService {
   }
 
   newBudget(budget: Budget) {
-    // Check for dupe budget
-    if (this.budgetExists(budget.name)) {
-      return alert('A budget with this name already exists.')
-    }
-
-    // Add new budget
-    this.$budgetList.next(
-      [...this.$budgetList.getValue(), budget]
-    )
-
-    // Set selected budget to newly created budget
-    this.setBudget(budget)
+    console.log('budget service called: ' + budget.name)
+    // // Check for dupe budget
+    // if (this.budgetExists(budget.name)) {
+    //   return alert('A budget with this name already exists.')
+    // }
+    //
+    // // Add new budget
+    // this.$budgetList.next(
+    //   [...this.$budgetList.getValue(), budget]
+    // )
+    //
+    // // Set selected budget to newly created budget
+    // this.setBudget(budget)
   }
 
-  setBudget(budget: Budget | null) {
+  setBudget(budget: Budget) {
     this.$selectedBudget.next(budget);
   }
 
