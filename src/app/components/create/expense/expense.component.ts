@@ -12,8 +12,6 @@ import {ExpenseService} from "../../../services/expense.service";
 })
 export class ExpenseComponent {
 
-  constructor(private expenseService: ExpenseService) {}
-
   categoryList: string[] = Object.values(Categories)
 
   expenseForm = new FormGroup({
@@ -23,6 +21,7 @@ export class ExpenseComponent {
     amount: new FormControl('', Validators.required),
     note: new FormControl('')
   })
+  constructor(private expenseService: ExpenseService) {}
 
   formatCurrency() {
     const value = this.expenseForm.value.amount;
