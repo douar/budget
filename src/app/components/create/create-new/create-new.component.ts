@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {ExpenseService} from "../../../services/expense.service";
 import {Observable,} from "rxjs";
+import {BudgetService} from "../../../services/budget.service";
 
 @Component({
   selector: 'app-create-new',
@@ -9,11 +9,11 @@ import {Observable,} from "rxjs";
 })
 export class CreateNewComponent {
 
-  currentPage$: Observable<number> = this.expenseService.getTrackNewBudgetPage()
+  currentPage$: Observable<number> = this.budgetService.getTrackNewBudgetPage()
 
-  constructor(private expenseService: ExpenseService) {}
+  constructor(private budgetService: BudgetService) {}
 
   clickNext(current: number) {
-    this.expenseService.setTrackBudgetPage(current + 1)
+    this.budgetService.setTrackBudgetPage(current + 1)
   }
 }
