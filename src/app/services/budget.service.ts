@@ -7,8 +7,13 @@ import {Budget} from "../interfaces/budget";
 })
 export class BudgetService {
 
+  private dummyBudgetList = [
+    {name: "Ex 1", income: [], expense: []},
+    {name: "ex 2", income: [], expense: []}
+  ]
+
   private $trackNewBudgetPage = new BehaviorSubject<number>(1)
-  private $budgetList = new BehaviorSubject<Budget[]>([])
+  private $budgetList = new BehaviorSubject<Budget[]>(this.dummyBudgetList)
   private $selectedBudget = new BehaviorSubject<Budget | null>(null)
   constructor() { }
 
