@@ -56,7 +56,27 @@ export class BudgetService {
     return this.$selectedBudget.asObservable()
   }
 
-  addExpenseToBudget(expense: Expense) {
-    console.log('addExpenseToBudgetCalled' + JSON.stringify(expense))
+  updateBudgetList(budget: Budget) {
+    this.$budgetList.next(
+      this.$budgetList.value.map(b =>
+        b.name === budget.name ? budget : b
+      )
+    );
+  }
+
+  addExpenseToBudget(newExpense: Expense) {
+    // Get selected budget
+    const budget = this.$selectedBudget.value;
+    if (!budget) return;
+
+    // Create new updated budget object
+    const updatedBudget: Budget = {
+      ...budget,
+      expense: [...budget.expense, newExpense]
+    };
+
+    // Set budget to updated budget & Update Budget List
+    this.setBudget(updatedBudget);
+    this.updateBudgetList(updatedBudget);
   }
 }
