@@ -33,7 +33,6 @@ export class BudgetService {
   }
 
   newBudget(budget: Budget): void {
-    console.log('budget service called: ' + budget.name)
     // Check for dupe budget
     if (this.budgetExists(budget.name)) {
       return alert('A budget with this name already exists.')

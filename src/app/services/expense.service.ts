@@ -36,7 +36,6 @@ export class ExpenseService {
     }
 
     // Update current budget and budget list
-    console.log('called addNewExpense' + JSON.stringify(newExpense))
     this.budgetService.addExpenseToBudget(newExpense)
   }
 
