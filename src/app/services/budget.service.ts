@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Budget} from "../interfaces/budget";
+import {Expense} from "../interfaces/expense";
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,9 @@ export class BudgetService {
 
   getBudget(): Observable<Budget | null> {
     return this.$selectedBudget.asObservable()
+  }
+
+  addExpenseToBudget(expense: Expense) {
+    console.log('addExpenseToBudgetCalled' + JSON.stringify(expense))
   }
 }
