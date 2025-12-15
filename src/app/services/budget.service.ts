@@ -8,6 +8,7 @@ import {Expense} from "../interfaces/expense";
 })
 export class BudgetService {
 
+  // TODO delete this
   private dummyBudgetList = [
     {name: "Ex 1", income: [], expense: []},
     {name: "ex 2", income: [], expense: []}
