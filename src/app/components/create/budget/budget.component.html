@@ -5,6 +5,8 @@
     <label> Budget Name
       <input type="text" formControlName="name">
     </label>
-    <button type="submit" [disabled]="!newBudgetNameForm.valid">Create</button>
+    <button type="submit"
+            *ngIf="(currentPage$ | async) === 1"
+            [disabled]="!newBudgetNameForm.valid">Create</button>
   </form>
 </div>
