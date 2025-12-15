@@ -24,9 +24,7 @@ export class BudgetService {
   }
 
   setTrackBudgetPage(num: number): void {
-    console.log(this.$trackNewBudgetPage.value)
     this.$trackNewBudgetPage.next(num)
-    console.log(this.$trackNewBudgetPage.value)
   }
 
   budgetExists(name: string): boolean {
