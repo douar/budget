@@ -4,6 +4,8 @@ import {Categories} from "../../../enums/categories";
 import {Expense} from "../../../interfaces/expense";
 import {ActivityType} from "../../../enums/activity-type";
 import {ExpenseService} from "../../../services/expense.service";
+import {BudgetService} from "../../../services/budget.service";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-expense',
@@ -21,7 +23,7 @@ export class ExpenseComponent {
     amount: new FormControl('', Validators.required),
     note: new FormControl('')
   })
-  constructor(private expenseService: ExpenseService) {}
+  constructor(private expenseService: ExpenseService, private budgetService: BudgetService) {}
 
   formatCurrency() {
     const value = this.expenseForm.value.amount;
@@ -41,13 +43,23 @@ export class ExpenseComponent {
 
     alert('You have submitted!' + this.expenseForm.value)
 
+    let budgetName: string = ''
+    this.budgetService.getBudget().pipe(first()).subscribe({
+      next: value => {
+        if (value !== null) {
+          budgetName = value.name
+        }
+      }
+    })
+
     let newExpense: Expense = {
       date: String(this.expenseForm.value.date),
       category: String(this.expenseForm.value.category),
       item: String(this.expenseForm.value.item),
       amount: Number(this.expenseForm.value.amount),
       note: String(this.expenseForm.value.note),
-      type: ActivityType.DEBIT
+      type: ActivityType.DEBIT,
+      budgetName: budgetName
     }
 
     this.expenseService.newExpense(newExpense)
