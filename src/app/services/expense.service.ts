@@ -14,6 +14,7 @@ export class ExpenseService {
 
   newExpense(expenseForm: FormGroup) {
 
+    // Get current budget name
     let budgetName: string = ''
     this.budgetService.getBudget().pipe(first()).subscribe({
       next: value => {
@@ -23,6 +24,7 @@ export class ExpenseService {
       }
     })
 
+    // Build new expense object
     let newExpense: Expense = {
       date: String(expenseForm.value.date),
       category: String(expenseForm.value.category),
@@ -33,6 +35,7 @@ export class ExpenseService {
       budgetName: budgetName
     }
 
+    // Update current budget and budget list
     console.log('called addNewExpense' + JSON.stringify(newExpense))
     this.budgetService.addExpenseToBudget(newExpense)
   }
