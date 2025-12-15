@@ -17,7 +17,7 @@ export class BudgetComponent {
   constructor(private budgetService: BudgetService) {}
 
   createNewBudget() {
-    console.log('clicked: ' + this.newBudgetNameForm.value.name)
+    console.log('new budget created: ' + this.newBudgetNameForm.value.name)
     let newBudget: Budget = {
       name: this.newBudgetNameForm.value.name,
       expense: [],

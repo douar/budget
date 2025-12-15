@@ -31,7 +31,7 @@ export class BudgetService {
     );
   }
 
-  newBudget(budget: Budget) {
+  newBudget(budget: Budget): void {
     console.log('budget service called: ' + budget.name)
     // Check for dupe budget
     if (this.budgetExists(budget.name)) {
@@ -42,18 +42,16 @@ export class BudgetService {
     this.$budgetList.next(
       [...this.$budgetList.getValue(), budget]
     )
-    console.log(this.$budgetList.getValue())
 
     // Set selected budget to newly created budget
     this.setBudget(budget)
-    console.log(this.$selectedBudget.getValue())
   }
 
-  setBudget(budget: Budget) {
+  setBudget(budget: Budget): void {
     this.$selectedBudget.next(budget);
   }
 
-  getBudget() {
+  getBudget(): Observable<Budget | null> {
     return this.$selectedBudget.asObservable()
   }
 }
