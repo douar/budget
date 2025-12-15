@@ -1,11 +1,21 @@
-Create a New Budget Page
-<hr>
+<div class="create-new-budget-container">
+  <h3>Create a New Budget</h3>
+  <div class="create-new-budget-header-view" *ngIf="selectedBudget$ | async as b">
+    <h1>New Budget: {{b.name}}</h1>
+  </div>
 
-<div *ngIf="currentPage$ | async as count">
-  <app-budget *ngIf="count === 1"></app-budget>
-  <hr>
+  <div class="create-new-budget-content-view" *ngIf="currentPage$ | async as count">
+    <app-budget *ngIf="count === 1"></app-budget>
+    <hr>
 
-  <app-expense *ngIf="count === 2" ></app-expense>
-  <hr>
-  <button *ngIf="count < 3 && (selectedBudget$ | async)" (click)="clickNext(count)">Next</button>
+    <app-expense *ngIf="count === 2" ></app-expense>
+    <hr>
+    <button *ngIf="count < 3 && (selectedBudget$ | async)" (click)="clickNext(count)">Next</button>
+  </div>
 </div>
+
+
+
+
+
+
