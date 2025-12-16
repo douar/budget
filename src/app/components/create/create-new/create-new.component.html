@@ -5,10 +5,16 @@
   </div>
 
   <div class="create-new-budget-content-view" *ngIf="currentPage$ | async as count">
-    <app-budget *ngIf="count === 1"></app-budget>
+    <div class="create-new-budget-content-view-name" *ngIf="count === 1">
+      <app-budget></app-budget>
+    </div>
     <hr>
 
-    <app-expense *ngIf="count === 2" ></app-expense>
+<!--    <div class="create-new-budget-content-view-expense" *ngIf="count === 2">-->
+    <div class="create-new-budget-content-view-expense" *ngIf="count === 1">
+      <app-expense></app-expense>
+      <app-expense-list></app-expense-list>
+    </div>
     <hr>
 
     <app-income *ngIf="count === 3"></app-income>

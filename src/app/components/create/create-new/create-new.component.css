@@ -1,0 +1,5 @@
+.create-new-budget-content-view-expense {
+  border: black solid thin;
+  display: flex;
+  justify-content: space-between;
+}
