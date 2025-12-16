@@ -10,6 +10,10 @@
 
     <app-expense *ngIf="count === 2" ></app-expense>
     <hr>
+
+    <app-income *ngIf="count === 3"></app-income>
+    <hr>
+
     <button *ngIf="count < 3 && (selectedBudget$ | async)" (click)="clickNext(count)">Next</button>
   </div>
 </div>

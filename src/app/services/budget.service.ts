@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Budget} from "../interfaces/budget";
 import {Expense} from "../interfaces/expense";
+import {Income} from "../interfaces/income";
 
 @Injectable({
   providedIn: 'root'
@@ -64,7 +65,7 @@ export class BudgetService {
     );
   }
 
-  addExpenseToBudget(newExpense: Expense) {
+  addExpenseToBudget(newExpense: Expense): void {
     // Get selected budget
     const budget = this.$selectedBudget.value;
     if (!budget) return;
@@ -73,6 +74,22 @@ export class BudgetService {
     const updatedBudget: Budget = {
       ...budget,
       expense: [...budget.expense, newExpense]
+    };
+
+    // Set budget to updated budget & Update Budget List
+    this.setBudget(updatedBudget);
+    this.updateBudgetList(updatedBudget);
+  }
+
+  addIncomeToBudget(newIncome: Income): void {
+    // Get selected budget
+    const budget = this.$selectedBudget.value;
+    if (!budget) return;
+
+    // Create new updated budget object
+    const updatedBudget: Budget = {
+      ...budget,
+      income: [...budget.income, newIncome]
     };
 
     // Set budget to updated budget & Update Budget List
