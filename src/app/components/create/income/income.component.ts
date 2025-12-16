@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {IncomeService} from "../../../services/income.service";
 
 @Component({
   selector: 'app-income',
@@ -15,7 +16,7 @@ export class IncomeComponent {
     note: new FormControl('')
   })
 
-  constructor() {}
+  constructor(private incomeService: IncomeService) {}
 
   formatCurrency() {
     const value = this.incomeForm.value.amount;
@@ -29,6 +30,16 @@ export class IncomeComponent {
 
   handleSubmit() {
     console.log(JSON.stringify(this.incomeForm.value))
+
+    if (this.incomeForm.invalid) {
+      alert('Please fill all required fields')
+      return;
+    }
+
+    // TODO delete
+    alert('You have submitted!' + this.incomeForm.value)
+
+    this.incomeService.newIncome(this.incomeForm)
   }
 
 }
