@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BudgetComponent } from './components/create/budget/budget.component';
 import { CreateNewComponent } from './components/create/create-new/create-new.component';
 import { IncomeComponent } from './components/create/income/income.component';
+import { ExpenseListComponent } from './components/render/expense-list/expense-list.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { IncomeComponent } from './components/create/income/income.component';
     ExpenseComponent,
     BudgetComponent,
     CreateNewComponent,
-    IncomeComponent
+    IncomeComponent,
+    ExpenseListComponent
   ],
   imports: [
     BrowserModule,
