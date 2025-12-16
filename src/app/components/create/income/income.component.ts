@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-income',
@@ -6,5 +7,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./income.component.css']
 })
 export class IncomeComponent {
+
+  incomeForm: FormGroup = new FormGroup({
+    date: new FormControl('', Validators.required),
+    item: new FormControl('', Validators.required),
+    amount: new FormControl('', Validators.required),
+    note: new FormControl('')
+  })
+
+  constructor() {}
+
+  formatCurrency() {
+    const value = this.incomeForm.value.amount;
+
+    if (value == null || value === '') return;
+
+    this.incomeForm.patchValue({
+      amount: Number(value).toFixed(2)
+    });
+  }
+
+  handleSubmit() {
+    console.log(JSON.stringify(this.incomeForm.value))
+  }
 
 }

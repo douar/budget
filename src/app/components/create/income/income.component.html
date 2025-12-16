@@ -1,1 +1,35 @@
-<p>income works!</p>
+<div class="income-container">
+  <form class="income-form"
+        [formGroup]="incomeForm" (ngSubmit)="handleSubmit()">
+    <label> Date
+      <input type="date"
+             formControlName="date" />
+    </label>
+
+    <label> Item
+      <input type="text"
+             formControlName="item"/>
+    </label>
+
+    <label> Amount
+      <input type="number"
+             formControlName="amount"
+             (blur)="formatCurrency()"/>
+    </label>
+
+    <label> Note
+      <input type="text"
+             formControlName="note"/>
+    </label>
+
+    <button type="submit" [disabled]="!incomeForm.valid">Submit</button>
+  </form>
+</div>
+
+<h2>Display Input Testing</h2>
+<p>
+  Date: {{incomeForm.value.date}} <br/>
+  Item: {{incomeForm.value.item}} <br/>
+  Amount: {{incomeForm.value.amount}} <br/>
+  Note: {{incomeForm.value.note}} <br/>
+</p>
