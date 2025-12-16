@@ -7,5 +7,6 @@ export interface Expense {
   item: string,
   amount: number,
   note?: string,
-  type: ActivityType.DEBIT
+  type: ActivityType.DEBIT,
+  budgetName: string
 }

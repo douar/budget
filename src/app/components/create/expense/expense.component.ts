@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Categories} from "../../../enums/categories";
-import {Expense} from "../../../interfaces/expense";
-import {ActivityType} from "../../../enums/activity-type";
 import {ExpenseService} from "../../../services/expense.service";
 
 @Component({
@@ -14,7 +12,7 @@ export class ExpenseComponent {
 
   categoryList: string[] = Object.values(Categories)
 
-  expenseForm = new FormGroup({
+  expenseForm: FormGroup = new FormGroup({
     date: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
     item: new FormControl('', Validators.required),
@@ -41,16 +39,7 @@ export class ExpenseComponent {
 
     alert('You have submitted!' + this.expenseForm.value)
 
-    let newExpense: Expense = {
-      date: String(this.expenseForm.value.date),
-      category: String(this.expenseForm.value.category),
-      item: String(this.expenseForm.value.item),
-      amount: Number(this.expenseForm.value.amount),
-      note: String(this.expenseForm.value.note),
-      type: ActivityType.DEBIT
-    }
-
-    this.expenseService.newExpense(newExpense)
+    this.expenseService.newExpense(this.expenseForm)
   }
 
 }

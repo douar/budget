@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Budget} from "../interfaces/budget";
+import {Expense} from "../interfaces/expense";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BudgetService {
 
+  // TODO delete this
   private dummyBudgetList = [
     {name: "Ex 1", income: [], expense: []},
     {name: "ex 2", income: [], expense: []}
@@ -31,8 +33,7 @@ export class BudgetService {
     );
   }
 
-  newBudget(budget: Budget) {
-    console.log('budget service called: ' + budget.name)
+  newBudget(budget: Budget): void {
     // Check for dupe budget
     if (this.budgetExists(budget.name)) {
       return alert('A budget with this name already exists.')
@@ -42,18 +43,40 @@ export class BudgetService {
     this.$budgetList.next(
       [...this.$budgetList.getValue(), budget]
     )
-    console.log(this.$budgetList.getValue())
 
     // Set selected budget to newly created budget
     this.setBudget(budget)
-    console.log(this.$selectedBudget.getValue())
   }
 
-  setBudget(budget: Budget) {
+  setBudget(budget: Budget): void {
     this.$selectedBudget.next(budget);
   }
 
-  getBudget() {
+  getBudget(): Observable<Budget | null> {
     return this.$selectedBudget.asObservable()
+  }
+
+  updateBudgetList(budget: Budget) {
+    this.$budgetList.next(
+      this.$budgetList.value.map(b =>
+        b.name === budget.name ? budget : b
+      )
+    );
+  }
+
+  addExpenseToBudget(newExpense: Expense) {
+    // Get selected budget
+    const budget = this.$selectedBudget.value;
+    if (!budget) return;
+
+    // Create new updated budget object
+    const updatedBudget: Budget = {
+      ...budget,
+      expense: [...budget.expense, newExpense]
+    };
+
+    // Set budget to updated budget & Update Budget List
+    this.setBudget(updatedBudget);
+    this.updateBudgetList(updatedBudget);
   }
 }
