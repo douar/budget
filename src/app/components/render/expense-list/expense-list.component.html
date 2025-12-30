@@ -1,1 +1,6 @@
-<p>expense-list works!</p>
+<div class="expense-list-container" *ngIf="selectedBudgetExpenseList | async as e">
+  <h4>Expenses</h4>
+  <div *ngFor="let expense of e.expense">
+    {{expense | json}}
+  </div>
+</div>
