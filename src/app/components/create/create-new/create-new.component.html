@@ -20,7 +20,9 @@
     </div>
 
     <div class="create-new-budget-btn">
+      <button *ngIf="count > 1 && (selectedBudget$ | async)">Back</button>
       <button *ngIf="count < 3 && (selectedBudget$ | async)" (click)="clickNext(count)">Next</button>
+      <button *ngIf="count === 3">Save</button>
     </div>
   </div>
 </div>
