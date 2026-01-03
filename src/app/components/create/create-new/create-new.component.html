@@ -1,5 +1,5 @@
 <div class="create-new-budget-container">
-  <h3>Create a New Budget</h3>
+  <h3>Creating a New Budget</h3>
   <div class="create-new-budget-header-view" *ngIf="selectedBudget$ | async as b">
     <h1>New Budget: {{b.name}}</h1>
   </div>
@@ -8,18 +8,20 @@
     <div class="create-new-budget-content-view-name" *ngIf="count === 1">
       <app-budget></app-budget>
     </div>
-    <hr>
 
     <div class="create-new-budget-content-view-expense" *ngIf="count === 2">
       <app-expense></app-expense>
       <app-expense-list></app-expense-list>
     </div>
-    <hr>
 
-    <app-income *ngIf="count === 3"></app-income>
-    <hr>
+    <div class="create-new-budget-content-view-income" *ngIf="count === 3">
+      <app-income></app-income>
+      <app-income-list></app-income-list>
+    </div>
 
-    <button *ngIf="count < 3 && (selectedBudget$ | async)" (click)="clickNext(count)">Next</button>
+    <div class="create-new-budget-btn">
+      <button *ngIf="count < 3 && (selectedBudget$ | async)" (click)="clickNext(count)">Next</button>
+    </div>
   </div>
 </div>
 

@@ -36,9 +36,6 @@ export class IncomeComponent {
       return;
     }
 
-    // TODO delete
-    alert('You have submitted!' + this.incomeForm.value)
-
     this.incomeService.newIncome(this.incomeForm)
   }
 

@@ -1,0 +1,27 @@
+<div class="income-list-container">
+  <h2>Expenses</h2>
+  <div class="income-list-table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Note</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="selectedBudgetExpenseList | async as b">
+        <tr *ngFor="let income of b.income">
+          <td>{{income.date}}</td>
+          <td>{{income.item}}</td>
+          <td>{{income.amount | currency}}</td>
+          <td>{{income.note}}</td>
+          <td>X</td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

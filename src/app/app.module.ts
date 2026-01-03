@@ -8,6 +8,7 @@ import { BudgetComponent } from './components/create/budget/budget.component';
 import { CreateNewComponent } from './components/create/create-new/create-new.component';
 import { IncomeComponent } from './components/create/income/income.component';
 import { ExpenseListComponent } from './components/render/expense-list/expense-list.component';
+import { IncomeListComponent } from './components/render/income-list/income-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ExpenseListComponent } from './components/render/expense-list/expense-l
     BudgetComponent,
     CreateNewComponent,
     IncomeComponent,
-    ExpenseListComponent
+    ExpenseListComponent,
+    IncomeListComponent
   ],
   imports: [
     BrowserModule,

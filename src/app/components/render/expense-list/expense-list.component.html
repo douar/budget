@@ -1,6 +1,29 @@
-<div class="expense-list-container" *ngIf="selectedBudgetExpenseList | async as e">
-  <h4>Expenses</h4>
-  <div *ngFor="let expense of e.expense">
-    {{expense | json}}
-  </div>
+<div class="expense-list-container">
+  <h2>Expenses</h2>
+    <div class="expense-list-table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Item</th>
+          <th>Amount</th>
+          <th>Note</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="selectedBudgetExpenseList | async as e">
+          <tr *ngFor="let expense of e.expense">
+            <td>{{expense.date}}</td>
+            <td>{{expense.category}}</td>
+            <td>{{expense.item}}</td>
+            <td>{{expense.amount | currency}}</td>
+            <td>{{expense.note}}</td>
+            <td>X</td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
 </div>

@@ -1,4 +1,5 @@
 <div class="income-container">
+  <h2>Add Income</h2>
   <form class="income-form"
         [formGroup]="incomeForm" (ngSubmit)="handleSubmit()">
     <label> Date
@@ -25,11 +26,3 @@
     <button type="submit" [disabled]="!incomeForm.valid">Submit</button>
   </form>
 </div>
-
-<h2>Display Input Testing</h2>
-<p>
-  Date: {{incomeForm.value.date}} <br/>
-  Item: {{incomeForm.value.item}} <br/>
-  Amount: {{incomeForm.value.amount}} <br/>
-  Note: {{incomeForm.value.note}} <br/>
-</p>

@@ -37,9 +37,6 @@ export class ExpenseComponent {
       return;
     }
 
-    // TODO delete
-    alert('You have submitted!' + this.expenseForm.value)
-
     this.expenseService.newExpense(this.expenseForm)
   }
 
